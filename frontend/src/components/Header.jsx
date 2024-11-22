@@ -26,10 +26,10 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+            <Navbar variant="dark" expand="lg" collapseOnSelect className="main-header">
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand href="/">Mern App</Navbar.Brand>
+                        <Navbar.Brand href="/">CHOPPERSHOOT</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
