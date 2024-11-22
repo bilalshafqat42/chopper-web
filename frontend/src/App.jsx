@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom'
-import Header from './components/Header'
-import './App.css'
+import { Outlet } from "react-router-dom"
 import { Container } from 'react-bootstrap'
-import { ToastContainer } from 'react-bootstrap'
-import "react-toastify/dist/ReactToastify.css"
+import Header from './components/Header'
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
   return (

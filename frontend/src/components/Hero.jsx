@@ -8,13 +8,12 @@ const Hero = () => {
             <Container className='d-flex justify-content-center'>
                 <Card className='p-5 d-flex flex-column align-items-center hero-card bg-light w-75'>
                     <h1 className='text-center mb-4'>Mern Authentication</h1>
-                    <p>This is boiler plate for MERN authentication that stores a JWT in an HTTP-Only cookie. It also uses Redux Toolkit and React Bootstrap Library</p>
+                    <p className='text-center mb-4'>This is a boilerplate code for mern stack application authentication that stores a jwt in a httply cookie. it also uses redux toolkit and react bootstrap library.</p>
                     <div className='d-flex'>
-
-                        <LinkContainer to={"/login"}>
-                            <Button variant='primary' className='me-3'>Sign In</Button></LinkContainer>
-                            <LinkContainer to={"/register"}>
-                            <Button variant='secondary'>Register</Button></LinkContainer>
+                        <LinkContainer to="/login">
+                            <Button variant='primary' href='/login' className='me-3'>Sign In</Button></LinkContainer>
+                        <LinkContainer to="/register">
+                            <Button variant='secondary' href='/register' className='me-3'>Register</Button></LinkContainer>
                     </div>
                 </Card>
             </Container>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import FormContainer from '../components/FormContainer'
-import { Button, Form, Row, Col } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from "react-toastify"
 import Loader from '../components/Loader'
-import { useRegisterMutation } from '../store/slices/usersApiSlice'
+import { useUpdateUserMutation } from '../store/slices/usersApiSlice'
 import { setCredentials } from '../store/slices/authSlice'
 
-const Register = () => {
+const Profile = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -19,33 +19,44 @@ const Register = () => {
 
     const { userInfo } = useSelector((state) => state.auth)
 
-    const [register, { isLoading }] = useRegisterMutation()
+    const [updateProfile, { isLoading }] = useUpdateUserMutation()
+
+    // useEffect(() => {
+    //     setName(userInfo.name)
+    //     setEmail(userInfo.email)
+    // }, [userInfo.setName, userInfo.setEmail])
 
     useEffect(() => {
         if (userInfo) {
-            navigate("/");
+            setName(userInfo.name || ''); // Fallback to empty string in case of undefined
+            setEmail(userInfo.email || '');
         }
-    }, [navigate, userInfo])
+    }, [userInfo]);
 
     const submitHandler = async (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
         if (password !== confirmPassword) {
-            toast.error("Password do not match")
-
+            toast.error("Passwords do not match");
         } else {
             try {
-                const res = await register({ name, email, password }).unwrap();
-                dispatch(setCredentials({ ...res }))
-                navigate("/register")
+                const res = await updateProfile({
+                    _id: userInfo._id, // User ID remains the same
+                    name, // Updated name from state
+                    email, // Updated email from state
+                    password: password || undefined, // Optional: only send if a new password is provided
+                }).unwrap();
+                dispatch(setCredentials({ ...res }));
+                toast.success("Profile Updated");
             } catch (error) {
-                toast.error(err?.data?.message || err.error)
+                toast.error(error?.data?.message || error.error);
             }
         }
-    }
+    };
+
+
     return (
         <FormContainer>
-            <h1>Register</h1>
+            <h1>Update Profile </h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group className='my-2' controlId='name'>
                     <Form.Label>Your Name</Form.Label>
@@ -64,14 +75,10 @@ const Register = () => {
                     <Form.Control type='password' placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
                 </Form.Group>
                 {isLoading && <Loader />}
-                <Button type='submit' variant='primary' className='mt-3'>Sign In</Button>
-                <Row className='py-3'>
-                    <Col>
-                        Already have an account? <Link to="/login">Login Here</Link></Col>
-                </Row>
+                <Button type='submit' variant='primary' className='mt-3'>Update Profile</Button>
             </Form>
         </FormContainer>
     )
 }
 
-export default Register
+export default Profile
