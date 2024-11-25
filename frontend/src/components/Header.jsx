@@ -28,7 +28,7 @@ const Header = () => {
     return (
         <header>
             <Navbar variant="dark" expand="lg" collapseOnSelect className="main-header">
-                <Container>
+                <Container fluid className="py-3 px-5 d-flex align-self-center">
                     <LinkContainer to="/">
                         <Navbar.Brand href="/">
                             <img src={logo} width={251} height={40} alt="choppershoot logo" />
@@ -40,6 +40,9 @@ const Header = () => {
                             {userInfo ? (
                                 <>
                                     <NavDropdown title={userInfo.name} id="username">
+                                        <LinkContainer to="/dashboard">
+                                            <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                                        </LinkContainer>
                                         <LinkContainer to="/profile">
                                             <NavDropdown.Item>Profile</NavDropdown.Item>
                                         </LinkContainer>

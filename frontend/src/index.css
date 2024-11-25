@@ -10,3 +10,13 @@
 body {
   background-color: #000;
 }
+ul.vertical-navigation-bar {
+  list-style: none;
+}
+
+ul.vertical-navigation-bar li svg {
+  height: 24px;
+}
+ul.sub-navigation-bar li svg {
+  height: 20px;
+}
