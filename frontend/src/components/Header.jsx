@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap"
 import { useLogoutMutation } from "../store/slices/usersApiSlice"
 import { logout } from "../store/slices/authSlice"
 import { useNavigate } from "react-router-dom"
+import logo from "../assets/white-logo.png"
 
 
 const Header = () => {
@@ -29,7 +30,9 @@ const Header = () => {
             <Navbar variant="dark" expand="lg" collapseOnSelect className="main-header">
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand href="/">CHOPPERSHOOT</Navbar.Brand>
+                        <Navbar.Brand href="/">
+                            <img src={logo} width={251} height={40} alt="choppershoot logo" />
+                        </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
