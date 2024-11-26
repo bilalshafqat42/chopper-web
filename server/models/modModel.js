@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const mod = mongoose.Schema(
+const modSchema = mongoose.Schema(
   {
     name: {
       type: String,

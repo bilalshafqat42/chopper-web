@@ -4,7 +4,9 @@ dotenv.config();
 import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 const port = process.env.PORT || 4000;
+// routes
 import userRoutes from "./routes/userRoutes.js";
+import modRoutes from "./routes/modRoutes.js";
 import connectDB from "./config/db.js";
 
 // database initiallize
@@ -21,6 +23,7 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/users", userRoutes);
+app.use("/api/mod", modRoutes);
 
 // middleware
 app.use(notFound);
