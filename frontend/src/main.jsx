@@ -19,6 +19,11 @@ import Register from './pages/Register.jsx';
 import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Profile from './pages/Profile.jsx';
+import CreateMod from "./pages/mod/CreateMod.jsx"
+import ViewMod from "./pages/mod/ViewMod.jsx"
+import PendingMod from "./pages/mod/PendingMod.jsx"
+import ModPage from './pages/mod/ModPage.jsx';
+import ApprovedMod from "./pages/mod/ApprovedMod.jsx"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +35,11 @@ const router = createBrowserRouter(
       {/* Private Routes  */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard/create-mod' element={<CreateMod />} />
+        <Route path='/dashboard/view-mod' element={<ViewMod />} />
+        <Route path='/dashboard/pending-mod' element={<PendingMod />} />
+        <Route path='/dashboard/approved-mod' element={<ApprovedMod />} />
+        <Route path='/dashboard/mod' element={<ModPage />} />
         <Route path='/profile' element={<Profile />} />
       </Route>
     </Route>
