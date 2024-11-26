@@ -1,12 +1,13 @@
 import React from 'react'
-import Sidebar from "../components/Sidebar"
+import ModPage from './mod/ModPage'
 import { Container, Card, Button } from 'react-bootstrap'
 
 const Dashboard = () => {
     return (
         <Container fluid>
-            <Sidebar />
-            <div className='text-white'>Dashboard</div></Container>
+            <ModPage />
+            <div className='text-white'>Dashboard</div>
+        </Container>
     )
 }
 

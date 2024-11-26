@@ -12,6 +12,11 @@ body {
 }
 ul.vertical-navigation-bar {
   list-style: none;
+  text-decoration: none;
+}
+ul.sub-navigation-bar {
+  list-style: none;
+  text-decoration: none;
 }
 
 ul.vertical-navigation-bar li svg {
@@ -19,4 +24,19 @@ ul.vertical-navigation-bar li svg {
 }
 ul.sub-navigation-bar li svg {
   height: 20px;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+ul li a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 400;
+}
+ul li a:hover {
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
 }

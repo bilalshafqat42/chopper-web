@@ -1,3 +1,8 @@
 .main-header {
   background-color: #000;
 }
+.main-section-dashboard {
+  background: #fff;
+  max-width: 95%;
+  min-height: 90vh;
+}
