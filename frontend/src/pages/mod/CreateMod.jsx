@@ -15,6 +15,7 @@ const CreateMod = () => {
     const [error, setError] = useState(null)
 
     const handleCreateMod = async (e) => {
+
         e.preventDefault()
 
         const mod = { name, email, dateFrom, dateTo, area, companyName, textArea }
@@ -26,6 +27,7 @@ const CreateMod = () => {
                 "Content-Type": "application/json"
             }
         })
+
         const json = await response.json()
 
         if (!response.ok) {

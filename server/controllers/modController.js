@@ -2,26 +2,43 @@ import Mod from "../models/modModel.js";
 import mongoose from "mongoose";
 
 // get all mod applications
+const getMods = async (req, res) => {
+  try {
+    console.log("Fetching mods...");
+    const mods = await Mod.find({}).sort({ createdAt: -1 });
+    console.log("Mods fetched:", mods);
 
-const getMod = async (req, res) => {
-  const mods = await Mod.find({}).sort({ createdAt: -1 });
-  res.status(200).json(mods);
+    if (mods.length === 0) {
+      return res.status(404).json({ error: "No mods found" });
+    }
+
+    res.status(200).json(mods);
+  } catch (error) {
+    console.error("Error fetching mods:", error);
+    res.status(500).json({ error: "Failed to fetch mods" });
+  }
 };
 
 // get single mod application
-const getMods = async (req, res) => {
+const getMod = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "no such workout" });
+    return res.status(404).json({ error: "Invalid mod ID" });
   }
 
-  const mod = await Mod.findById(id);
+  try {
+    const mod = await Mod.findById(id);
 
-  if (!workout) {
-    return res.status(404).json({ error: "no such workout" });
+    if (!mod) {
+      return res.status(404).json({ error: "No such mod" });
+    }
+
+    res.status(200).json(mod);
+  } catch (error) {
+    console.error("Error fetching mod:", error);
+    res.status(500).json({ error: "Failed to fetch mod" });
   }
-  res.status(200).json(mod);
 };
 
 // create a new mod
@@ -51,13 +68,13 @@ const updateMod = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "no such workout" });
+    return res.status(400).json({ error: "no such mod" });
   }
 
   const mod = await Mod.findOneAndUpdate({ _id: id }, { ...req.body });
 
   if (!mod) {
-    return res.status(400).json({ error: "No such workout" });
+    return res.status(400).json({ error: "No such mod" });
   }
 
   res.status(200).json(mod);
