@@ -12,6 +12,38 @@ const CreateMod = () => {
     const [area, setArea] = useState("");
     const [companyName, setCompanyName] = useState("");
     const [textArea, setTextArea] = useState("");
+    const [error, setError] = useState(null)
+
+    const handleCreateMod = async (e) => {
+        e.preventDefault()
+
+        const mod = { name, email, dateFrom, dateTo, area, companyName, textArea }
+
+        const response = await fetch("/api/mod", {
+            method: "POST",
+            body: JSON.stringify(mod),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setError(json.error)
+        }
+
+        if (response.ok) {
+            setError(null)
+            setName("")
+            setEmail("")
+            setDateFrom("")
+            setDateTo("")
+            setArea("")
+            setCompanyName("")
+            setTextArea("")
+            console.log("new mod added", json)
+        }
+    }
 
     return (
         <div>
@@ -19,7 +51,7 @@ const CreateMod = () => {
             <div className='position-absolute top-20 end-0 w-75 h-100'>
                 <div className='container main-section-dashboard rounded px-5 py-5'>
                     <h1 className='mb-3'>Create Mod</h1>
-                    <Form className='card p-4'>
+                    <Form className='card p-4' onSubmit={handleCreateMod}>
                         <Row className='mb-3'>
                             <Form.Group as={Col} className='my-2' controlId='name'>
                                 <Form.Label>Name</Form.Label>
