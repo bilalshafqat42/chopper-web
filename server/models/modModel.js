@@ -30,6 +30,10 @@ const modSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    status: {
+      type: Boolean,
+      required: true,
+    },
     textArea: {
       type: String,
       required: true,

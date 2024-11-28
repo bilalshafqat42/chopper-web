@@ -43,7 +43,7 @@ const getMod = async (req, res) => {
 
 // create a new mod
 const createMod = async (req, res) => {
-  const { name, email, dateFrom, dateTo, area, companyName, textArea } =
+  const { name, email, dateFrom, dateTo, area, companyName, status, textArea } =
     req.body;
 
   // add to the database
@@ -55,6 +55,7 @@ const createMod = async (req, res) => {
       dateTo,
       area,
       companyName,
+      status,
       textArea,
     });
     res.status(200).json(mod);

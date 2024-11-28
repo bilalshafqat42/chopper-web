@@ -12,6 +12,7 @@ const CreateMod = () => {
     const [area, setArea] = useState("");
     const [companyName, setCompanyName] = useState("");
     const [textArea, setTextArea] = useState("");
+    const [status, setStatus] = useState("")
     const [error, setError] = useState(null)
 
     const handleCreateMod = async (e) => {
@@ -52,8 +53,7 @@ const CreateMod = () => {
             <ModSidebar />
             <div className='position-absolute top-20 end-0 w-75 h-100'>
                 <div className='container main-section-dashboard rounded px-5 py-5'>
-                    <h1 className='mb-3'>Create Mod</h1>
-                    <Form className='card p-4' onSubmit={handleCreateMod}>
+                    <h1 className='mb-5'>Create MOD Applications</h1>                    <Form className='card p-4' onSubmit={handleCreateMod}>
                         <Row className='mb-3'>
                             <Form.Group as={Col} className='my-2' controlId='name'>
                                 <Form.Label>Name</Form.Label>
